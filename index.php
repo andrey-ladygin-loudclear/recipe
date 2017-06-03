@@ -1,5 +1,5 @@
 <?php
 
-var_dump('TEST index.hpp');
+var_dump('TEST NOT THIS SHould be index.hpp');
 
 ?>

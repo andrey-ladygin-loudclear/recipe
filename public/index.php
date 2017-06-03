@@ -1,5 +1,5 @@
 <?php
-die('TEST');
+die('THis is right index');
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
