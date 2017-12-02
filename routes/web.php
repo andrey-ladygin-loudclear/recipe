@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Front\Dashboard@index');
+Route::resource('/admin/receipts', 'Back\Receipts');
+Route::resource('/admin/ingredients', 'Back\Ingredients');
