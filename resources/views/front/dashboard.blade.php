@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    @foreach($receipts as $receipt)
-        <div class="receipt">
-            <h1>{{ $receipt->name }}</h1>
-            <p>{{ $receipt->description }}</p>
-        </div>
-    @endforeach
+    <div class="receipts">
+        @foreach($receipts as $receipt)
+            <div class="receipt">
+                <h3><a href="/receipts/{{ $receipt->id }}">{{ $receipt->name }}</a></h3>
+                <p>{{ $receipt->description }}</p>
+            </div>
+        @endforeach
+    </div>
 @endsection

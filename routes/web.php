@@ -11,6 +11,16 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', 'Front\Dashboard@index');
 Route::resource('/admin/receipts', 'Back\Receipts');
 Route::resource('/admin/ingredients', 'Back\Ingredients');
+Route::post('/admin/ingredients/search', 'Back\Ingredients@search');
+Route::post('/admin/tinymce/upload', 'Back\Tinymce@upload');
+
+Route::get('/receipts/{receipt}', 'Front\Receipts@show');
+Route::get('/ingredients/{ingredient}', 'Front\Ingredients@show');
+
+
+//Route::get('/home', 'HomeController@index')->name('home');

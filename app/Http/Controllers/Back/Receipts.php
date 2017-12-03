@@ -4,10 +4,22 @@ namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
 use App\Model\Ingredient;
+use App\Model\Receipt;
 use Illuminate\Http\Request;
+use Mews\Purifier\Purifier;
 
 class Receipts extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +27,8 @@ class Receipts extends Controller
      */
     public function index()
     {
-        return view('back.receipts.index');
+        $receipts = auth()->user()->receipts()->latest()->get() ?? [];
+        return view('back.receipts.index', compact('receipts'));
     }
 
     /**
@@ -25,7 +38,7 @@ class Receipts extends Controller
      */
     public function create()
     {
-        return view('back.receipts.create');
+        return view('back.receipts.edit');
     }
 
     /**
@@ -36,7 +49,15 @@ class Receipts extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $receipt = Receipt::create([
+            'user_id' => auth()->id(),
+            'name' => request('name'),
+            'icon' => request('icon'),
+            'description' => clean(request('description')),
+        ]);
+
+        //return redirect("admin/receipts/{$receipt->id}/edit");
+        return redirect("admin/receipts");
     }
 
     /**
@@ -47,7 +68,7 @@ class Receipts extends Controller
      */
     public function show($id)
     {
-        //
+        dd($id);
     }
 
     /**
@@ -56,9 +77,9 @@ class Receipts extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Receipt $receipt)
     {
-        //
+        return view('back.receipts.edit', $receipt);
     }
 
     /**

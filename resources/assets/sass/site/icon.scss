@@ -1,0 +1,25 @@
+.icon {
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+        .hover {
+            display: block;
+        }
+    }
+
+    img {
+        display: inline-block;
+    }
+
+    .hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background: url(/assets/img/mix/hover-icon.png) no-repeat center center transparent;
+        background-size: cover;
+    }
+}

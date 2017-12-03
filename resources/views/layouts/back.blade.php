@@ -15,8 +15,11 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="header">
+    @include('back.components.nav')
+</div>
 <div id="app" class="flex-center position-ref full-height main">
-    <div class="content">
+    <div class="container">
         @yield('content')
     </div>
 </div>

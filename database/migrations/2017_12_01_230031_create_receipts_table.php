@@ -14,15 +14,16 @@ class CreateReceiptsTable extends Migration
     public function up()
     {
         Schema::create('receipts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->string('name');
             $table->string('icon');
+            $table->string('author');
             $table->text('description');
-            $table->tinyInteger('level');
-            $table->boolean('public');
+            $table->tinyInteger('level')->default('1');
+            $table->boolean('public')->default('1');
 
             $table->timestamps();
         });

@@ -1,10 +1,5 @@
 @extends('layouts.back')
 
 @section('content')
-    @foreach($receipts as $receipt)
-        <div class="receipt">
-            <h1>{{ $receipt->name }}</h1>
-            <p>{{ $receipt->description }}</p>
-        </div>
-    @endforeach
+    <h2>All ingredients</h2>
 @endsection

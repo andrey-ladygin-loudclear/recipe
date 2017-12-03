@@ -3,10 +3,21 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Model\Ingredient;
 use Illuminate\Http\Request;
 
 class Ingredients extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +46,7 @@ class Ingredients extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -81,5 +92,12 @@ class Ingredients extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $q = $request->get('q');
+
+        return response(Ingredient::where('name', 'like', "%$q%")->get());
     }
 }

@@ -1,0 +1,23 @@
+.receipts {
+    .receipt {
+        padding-top: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eaeaea;
+
+        h3 {
+            a {
+                color: #aaa;
+                text-decoration: none;
+
+                &:hover {
+                    color: #888;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        p {
+            font-size: 14px;
+        }
+    }
+}
