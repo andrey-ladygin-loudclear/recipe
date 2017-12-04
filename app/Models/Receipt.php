@@ -18,6 +18,7 @@ class Receipt extends Model
     {
         $this->attributes['icon'] = new Icon($value, self::$dir);
     }
+
     public function getIconAttribute($value)
     {
         return new Icon($value, self::$dir);
@@ -25,6 +26,6 @@ class Receipt extends Model
 
     public function ingredients()
     {
-        return $this->belongsToMany(Ingredient::class, 'receipt_ingredients');
+        return $this->belongsToMany(Ingredient::class, 'receipt_ingredients')->withPivot(['quantity', 'measure']);
     }
 }

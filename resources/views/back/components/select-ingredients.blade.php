@@ -1,8 +1,30 @@
 <div class="form-group">
     {{ Form::label('icon', 'Ингредиенты:') }}
-    {{ Form::hidden('icon', $icon ?? '') }}
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#selectIngredientPopup">
+    <div class="added-ingredients">
+        @foreach($ingredients as $ingredient)
+            <div class="added-ingredient row form-inline">
+                <label class="col-md-4">
+                    <img src="/assets/img/herb/{{$ingredient->icon}}" class="col-md-3">
+                    <span class="col-md-9">{{$ingredient->name}}</span>
+                </label>
+                <input type="hidden" name="ingredients[{{$ingredient->id}}][id]" value="{{$ingredient->id}}">
+                <input type="text" name="ingredients[{{$ingredient->id}}][quantity]" value="{{$ingredient->pivot->quantity}}" class="form-control col-md-4">
+                <select name="ingredients[{{$ingredient->id}}][measure]" class="form-control col-md-3">
+                    <option @if($ingredient->pivot->measure == 'ч/л') selected @endif value="ч/л">(ч/л)</option>
+                    <option @if($ingredient->pivot->measure == 'ст/л') selected @endif value="ст/л">(ст/л)</option>
+                    <option @if($ingredient->pivot->measure == 'стакан') selected @endif value="стакан">(стакан)</option>
+                    <option @if($ingredient->pivot->measure == 'шт') selected @endif value="шт">(шт)</option>
+                    <option @if($ingredient->pivot->measure == 'грамм') selected @endif value="грамм">(грамм)</option>
+                    <option @if($ingredient->pivot->measure == 'литров') selected @endif value="литров">(литров)</option>
+                </select>
+                <span class="glyphicon glyphicon-trash col-md-1 remove-ingredient"></span>
+            </div>
+
+        @endforeach
+    </div>
+
+    <button type="button" class="btn btn-primary select-ingredient-popup">
         Добавить Ингредиент
     </button>
 
@@ -20,13 +42,11 @@
                     <div class="form-group">
                         {{ Form::text('ingredient_name', null, ['class' => 'form-control ingredient-name', 'placeholder' => 'Имя Ингредиента']) }}
                     </div>
-                    <div class="ingredient-results">
-
-                    </div>
+                    <div class="ingredient-results"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary save-selected-ingredients">Save changes</button>
                 </div>
             </div>
         </div>

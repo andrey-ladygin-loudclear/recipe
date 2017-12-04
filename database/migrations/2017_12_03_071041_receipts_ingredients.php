@@ -19,6 +19,9 @@ class ReceiptsIngredients extends Migration
             $table->integer('receipt_id')->unsigned();
             $table->integer('ingredient_id')->unsigned();
 
+            $table->string('quantity')->default('');
+            $table->string('measure')->default('');
+
 //            $table->unique(['receipt_id', 'ingredient_id']);
 
             $table->index('receipt_id');

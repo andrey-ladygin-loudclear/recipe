@@ -35,7 +35,7 @@ class Ingredients extends Controller
      */
     public function create()
     {
-        return view('back.ingredients.create');
+        return view('back.ingredients.edit');
     }
 
     /**
@@ -46,7 +46,15 @@ class Ingredients extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $ingredient = Ingredient::updateOrCreate(
+            ['id' => request('id')],
+            [
+                'name' => request('name'),
+                'icon' => request('icon'),
+                'description' => clean(request('description')),
+            ]);
+
+        return redirect("admin/receipts");
     }
 
     /**
@@ -66,9 +74,9 @@ class Ingredients extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Ingredient $ingredient)
     {
-        //
+        return view('back.receipts.edit', ['ingredient' => $ingredient]);
     }
 
     /**

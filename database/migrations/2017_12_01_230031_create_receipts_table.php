@@ -20,7 +20,7 @@ class CreateReceiptsTable extends Migration
 
             $table->string('name');
             $table->string('icon');
-            $table->string('author');
+            $table->string('author')->default('');
             $table->text('description');
             $table->tinyInteger('level')->default('1');
             $table->boolean('public')->default('1');

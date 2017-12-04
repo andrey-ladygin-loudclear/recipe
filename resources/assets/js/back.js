@@ -53,4 +53,4 @@ tinymce.init({
 });
 
 require('./back/icon');
-require('./back/select');
+require('./back/ingredient-select');

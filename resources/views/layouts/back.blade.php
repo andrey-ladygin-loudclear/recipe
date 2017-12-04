@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="header">
-    @include('back.components.nav')
+    @include('layouts.nav')
 </div>
 <div id="app" class="flex-center position-ref full-height main">
     <div class="container">

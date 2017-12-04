@@ -1,0 +1,29 @@
+.ingredient-results {
+    max-height: 500px;
+    overflow: auto;
+
+    img {
+        width: 32px;
+    }
+
+    .ingredient {
+        cursor: pointer;
+        padding: 10px 5px;
+
+        &:hover {
+            background-color: #eee;
+        }
+
+        &.selected {
+            background-color: #ddd;
+        }
+
+        h5 {
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+
+.added-ingredient {
+}

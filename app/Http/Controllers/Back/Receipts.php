@@ -49,12 +49,27 @@ class Receipts extends Controller
      */
     public function store(Request $request)
     {
-        $receipt = Receipt::create([
+        $receipt = Receipt::updateOrCreate(
+            ['id' => request('id')],
+            [
             'user_id' => auth()->id(),
             'name' => request('name'),
             'icon' => request('icon'),
+            'author' => request('author') ?? '',
             'description' => clean(request('description')),
         ]);
+
+        $receipt->ingredients()->detach();
+
+        foreach((array)$request->get('ingredients') as $ingredient)
+        {
+            $receipt->ingredients()->sync([
+                $ingredient['id'] => [
+                    'quantity' => $ingredient['quantity'],
+                    'measure' => $ingredient['measure'],
+                ]
+            ], false);
+        }
 
         //return redirect("admin/receipts/{$receipt->id}/edit");
         return redirect("admin/receipts");
@@ -79,7 +94,7 @@ class Receipts extends Controller
      */
     public function edit(Receipt $receipt)
     {
-        return view('back.receipts.edit', $receipt);
+        return view('back.receipts.edit', ['receipt' => $receipt]);
     }
 
     /**
