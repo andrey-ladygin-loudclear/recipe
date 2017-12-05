@@ -3,7 +3,7 @@
     {{ Form::hidden('icon', $icon ?? '') }}
     <div class="icon-preview">
         @if(!empty($icon))
-            <img src="{{$model::$dir}}/{{$icon}}" data-toggle="modal" data-target="#selectIconPopup">
+            <img src="{{ App\Helpers\IconHelper::asset($icon) }}" data-toggle="modal" data-target="#selectIconPopup">
         @else
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#selectIconPopup">
@@ -23,8 +23,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    @foreach($model::getIcons() as $icon)
-                        @include('back.components.icon', ['icon' => $icon, 'dir' => $model::$dir])
+                    @foreach(App\Helpers\IconHelper::getIcons() as $icon)
+                        @include('back.components.icon', ['icon' => $icon])
                     @endforeach
                 </div>
                 <div class="modal-footer">

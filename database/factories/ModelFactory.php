@@ -30,25 +30,16 @@ $factory->define(App\Model\User::class, function (Faker\Generator $faker) {
 
 $factory->define(\App\Model\Receipt::class, function (Faker\Generator $faker) {
 
-    $icons = scandir(public_path().Receipt::$dir);
-    while(in_array($icon = $icons[array_rand($icons)], ['.','..'])) {}
-
     return [
         'user_id' => User::all()->first()->id,
         'name' => $faker->name,
-        'icon' => $icon,
         'description' => $faker->text,
     ];
 });
 $factory->define(\App\Model\Ingredient::class, function (Faker\Generator $faker) {
 
-    $icons = scandir(public_path().Ingredient::$dir);
-
-    while(in_array($icon = $icons[array_rand($icons)], ['.','..'])) {}
-
     return [
         'name' => $faker->name,
-        'icon' => $icon,
         'description' => $faker->text,
     ];
 });

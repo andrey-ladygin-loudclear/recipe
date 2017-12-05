@@ -25,10 +25,10 @@ class ReceiptsIngredients extends Migration
 //            $table->unique(['receipt_id', 'ingredient_id']);
 
             $table->index('receipt_id');
-            $table->foreign('receipt_id')->references('id')->on('receipts')->onDelete('cascade');
+            $table->foreign('receipt_id')->references('id')->on('receipts')->onDelete('cascade')->onUpdate('cascade');
 
             $table->index('ingredient_id');
-            $table->foreign('ingredient_id')->references('id')->on('ingredients')->onDelete('cascade');
+            $table->foreign('ingredient_id')->references('id')->on('ingredients')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -39,6 +39,6 @@ class ReceiptsIngredients extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receipts');
+        Schema::dropIfExists('receipt_ingredients');
     }
 }

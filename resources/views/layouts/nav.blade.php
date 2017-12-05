@@ -17,6 +17,8 @@
             <ul class="nav navbar-nav">
                 <li class="{{ Route::getCurrentRoute()->uri == 'admin/receipts' ? 'active' : ''}}"><a href="/admin/receipts">Мои Рецепты</a></li>
                 <li class="{{ Route::getCurrentRoute()->uri == 'admin/receipts/create' ? 'active' : ''}}"><a href="/admin/receipts/create">Добавить Рецепт</a></li>
+                <li class="{{ Route::getCurrentRoute()->uri == 'admin/ingredients' ? 'active' : ''}}"><a href="/admin/ingredients">Ингредиенты</a></li>
+                <li class="{{ Route::getCurrentRoute()->uri == 'admin/ingredients/create' ? 'active' : ''}}"><a href="/admin/ingredients/create">Добавить Ингредиент</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                     <ul class="dropdown-menu">

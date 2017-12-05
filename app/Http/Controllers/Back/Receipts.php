@@ -7,6 +7,7 @@ use App\Model\Ingredient;
 use App\Model\Receipt;
 use Illuminate\Http\Request;
 use Mews\Purifier\Purifier;
+use Storage;
 
 class Receipts extends Controller
 {
@@ -49,15 +50,23 @@ class Receipts extends Controller
      */
     public function store(Request $request)
     {
+        if($request->file('preview'))
+        {
+            $path = $request->file('preview')->store('public/preview');
+        }
+
         $receipt = Receipt::updateOrCreate(
             ['id' => request('id')],
             [
-            'user_id' => auth()->id(),
-            'name' => request('name'),
-            'icon' => request('icon'),
-            'author' => request('author') ?? '',
-            'description' => clean(request('description')),
-        ]);
+                'user_id' => auth()->id(),
+                'name' => request('name'),
+                'preview' => !empty($path) ? Storage::url($path) : '',
+                'icon' => request('icon'),
+                'author' => request('author') ?? '',
+                'cooking_time' => request('cooking_time'),
+                'description' => clean(request('description')),
+            ]
+        );
 
         $receipt->ingredients()->detach();
 

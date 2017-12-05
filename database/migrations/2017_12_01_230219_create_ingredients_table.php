@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\IconHelper;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -16,8 +17,8 @@ class CreateIngredientsTable extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name');
-            $table->string('icon');
-            $table->text('description');
+            $table->string('icon')->default(IconHelper::QUESTION_MARK);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

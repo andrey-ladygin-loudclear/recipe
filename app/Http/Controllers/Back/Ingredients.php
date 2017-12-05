@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Back;
 
+use App\Helpers\IconHelper;
 use App\Http\Controllers\Controller;
 use App\Model\Ingredient;
 use Illuminate\Http\Request;
@@ -25,7 +26,8 @@ class Ingredients extends Controller
      */
     public function index()
     {
-        return view('back.ingredients.index');
+        $ingredients = Ingredient::all();
+        return view('back.ingredients.index', compact('ingredients'));
     }
 
     /**
@@ -76,7 +78,7 @@ class Ingredients extends Controller
      */
     public function edit(Ingredient $ingredient)
     {
-        return view('back.receipts.edit', ['ingredient' => $ingredient]);
+        return view('back.ingredients.edit', ['ingredient' => $ingredient]);
     }
 
     /**

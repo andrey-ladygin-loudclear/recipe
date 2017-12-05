@@ -10,19 +10,7 @@ class Receipt extends Model
 {
     use IconTrait;
 
-    public static $dir = '/assets/img/receipts';
-
     protected $guarded = [];
-
-    public function setIconAttribute($value)
-    {
-        $this->attributes['icon'] = new Icon($value, self::$dir);
-    }
-
-    public function getIconAttribute($value)
-    {
-        return new Icon($value, self::$dir);
-    }
 
     public function ingredients()
     {

@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\IconHelper;
 use Illuminate\Database\Seeder;
 
 class IngredientsSeeder extends Seeder
@@ -11,6 +12,12 @@ class IngredientsSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Model\Ingredient::class, 50)->create();
+        $ingredients = json_decode(file_get_contents('database/seeds/data/ingredients.json'));
+        foreach($ingredients as $ingredient)
+        {
+            \App\Model\Ingredient::create([
+                'name' => $ingredient
+            ]);
+        }
     }
 }

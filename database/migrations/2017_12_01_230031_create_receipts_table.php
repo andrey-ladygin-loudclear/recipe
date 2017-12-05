@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\IconHelper;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -16,13 +17,19 @@ class CreateReceiptsTable extends Migration
         Schema::create('receipts', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('name');
-            $table->string('icon');
+            $table->string('preview')->default('');
+            $table->string('icon')->default(IconHelper::QUESTION_MARK);
             $table->string('author')->default('');
+
             $table->text('description');
-            $table->tinyInteger('level')->default('1');
+
+            $table->tinyInteger('cooking_time')->unsigned()->nullable();
+            $table->tinyInteger('portions')->unsigned()->nullable();
+            $table->tinyInteger('difficult')->unsigned()->default(10);
+
             $table->boolean('public')->default('1');
 
             $table->timestamps();

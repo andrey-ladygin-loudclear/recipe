@@ -27,5 +27,7 @@
 .icon-preview {
     img {
         cursor: pointer;
+        min-height: 32px;
+        min-width: 32px;
     }
 }
