@@ -39,7 +39,7 @@
                 <button type="submit" class="btn btn-default">Отправить</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Ссылка</a></li>
+                <li class="{{ Route::getCurrentRoute()->uri == 'admin/parsed-receipts' ? 'active' : ''}}"><a href="/admin/parsed-receipts">Новые рецепты</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                     <ul class="dropdown-menu">

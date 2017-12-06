@@ -2,7 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Model\ParsedRecipes;
+use App\Models\ParsedRecipes;
+use App\Models\ParsedSites;
 use Goutte\Client;
 use Illuminate\Console\Command;
 use Symfony\Component\DomCrawler\Crawler;
@@ -43,21 +44,45 @@ class ParseRecipes extends Command
      */
     public function handle()
     {
-        $crawler = $this->client->request('GET', 'http://ivona.bigmir.net/cooking/recipes?p=1');
+    	$url = 'http://ivona.bigmir.net/cooking/recipes';
+    	$page = 1;
+    	$to = 1035;
 
-        $crawler->filterXPath('//li[@class="b-prev-articles__list-item g-clearfix"]')->each(function(Crawler $node, $i) {
-            $href = $node->children()->first()->attr('href');
-            $title = $node->filterXPath('//h5')->children()->first()->text();
-            $image = $node->children()->first()->children()->first()->attr('src');
+    	for($page = 1; $page < $to; $page++)
+		{
+			$get_url = "{$url}?p={$page}";
+			$count = ParsedSites::where('url', '=', $get_url)->count();
 
-//            $title = $node->filterXPath('//h5')->children()->text();
-//            $image = $node->children()->children()->attr('src');
+			$this->info("$page of $to, $get_url = $count");
 
-//            ParsedRecipes::create([
-//                'name' => $title,
-//                'link' => $href,
-//                'preview' => $image,
-//            ]);
-        });
+			if (!$count)
+			{
+				$crawler = $this->client->request('GET', $get_url);
+
+				$crawler->filterXPath('//li[@class="b-prev-articles__list-item g-clearfix"]')->each(function (Crawler $node, $i) {
+					$href = $node->children()->first()->attr('href');
+					$title = $node->filterXPath('//h5')->children()->first()->text();
+					$image = $node->children()->first()->children()->first()->attr('src');
+
+//					$title = $node->filterXPath('//h5')->children()->text();
+//					$image = $node->children()->children()->attr('src');
+
+					$title_count = ParsedRecipes::where('name', '=', $title)->count();
+//					$this->info("$title, $title_count");
+
+					if(!$title_count) {
+						ParsedRecipes::create([
+							'name' => $title,
+							'link' => 'http:'.$href,
+							'preview' => 'http:'.$image,
+						]);
+					}
+				});
+
+				ParsedSites::create([
+					'url' => $get_url
+				]);
+			}
+		}
     }
 }

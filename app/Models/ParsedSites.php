@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ParsedRecipes extends Model
+class ParsedSites extends Model
 {
-    protected $guarded = [];
+	protected $guarded = [];
 }

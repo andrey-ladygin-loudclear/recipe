@@ -23,6 +23,8 @@ class CreateReceiptsTable extends Migration
             $table->string('preview')->default('');
             $table->string('icon')->default(IconHelper::QUESTION_MARK);
             $table->string('author')->default('');
+			$table->integer('series_id')->unsigned()->nullable();
+			$table->foreign('series_id')->references('id')->on('series')->onDelete('cascade')->onUpdate('cascade');
 
             $table->text('description');
 
@@ -33,6 +35,8 @@ class CreateReceiptsTable extends Migration
             $table->boolean('public')->default('1');
 
             $table->timestamps();
+
+            //https://github.com/rtconner/laravel-likeable
         });
     }
 

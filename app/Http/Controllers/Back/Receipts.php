@@ -64,6 +64,7 @@ class Receipts extends Controller
                 'icon' => request('icon'),
                 'author' => request('author') ?? '',
                 'cooking_time' => request('cooking_time'),
+                'public' => request('public') ? 1 : 0,
                 'description' => clean(request('description')),
             ]
         );

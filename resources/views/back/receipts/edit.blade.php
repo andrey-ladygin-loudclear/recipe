@@ -36,6 +36,13 @@
             <!-- check if old value saved after validation fail -->
         </div>
 
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="public" value="1" <?= ($receipt->public ?? old('public')) ? 'checked' : ''; ?>>
+                Опубликовать
+            </label>
+        </div>
+
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Сохранить</button>
         </div>

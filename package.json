@@ -18,5 +18,10 @@
     "laravel-mix": "0.*",
     "lodash": "^4.17.4",
     "vue": "^2.1.10"
+  },
+  "dependencies": {
+    "ajax-bootstrap-select": "^1.4.3",
+    "bootstrap-select": "^1.12.4",
+    "tinymce": "^4.7.4"
   }
 }
