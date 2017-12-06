@@ -20,6 +20,7 @@ class CreateParsedRecipesTable extends Migration
             $table->string('link');
             $table->string('preview')->nullable();
             $table->boolean('checked')->default(false);
+            $table->boolean('approved')->default(false);
 
             $table->timestamps();
         });

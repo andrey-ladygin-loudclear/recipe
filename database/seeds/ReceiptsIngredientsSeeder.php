@@ -13,11 +13,11 @@ class ReceiptsIngredientsSeeder extends Seeder
      */
     public function run()
     {
-        for($i=0;$i<50;$i++) {
-            \DB::table('receipt_ingredients')->insert([
-                'ingredient_id' => Ingredient::inRandomOrder()->get()->first()->id,
-                'receipt_id' => Receipt::inRandomOrder()->get()->first()->id,
-            ]);
-        }
+//        for($i=0;$i<50;$i++) {
+//            \DB::table('receipt_ingredients')->insert([
+//                'ingredient_id' => Ingredient::inRandomOrder()->get()->first()->id,
+//                'receipt_id' => Receipt::inRandomOrder()->get()->first()->id,
+//            ]);
+//        }
     }
 }

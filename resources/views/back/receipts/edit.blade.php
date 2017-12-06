@@ -14,6 +14,13 @@
         <div class="form-group">
             {{ Form::label('preview', 'Картинка готового блюда:') }}
             {{ Form::file('preview', ['class' => 'form-control']) }}
+
+            <br>
+
+            @if(!empty($receipt->preview))
+                <img src="{{$receipt->preview}}" alt="" width="150px">
+            @endif
+                
         </div>
 
         @include('back.components.select-icon-form-group', ['icon' => $receipt->icon ?? old('icon'), 'model' => new \App\Model\Ingredient()])

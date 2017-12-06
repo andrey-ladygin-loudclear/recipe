@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Model\Ingredient;
 use App\Model\Receipt;
+use App\Models\Purchases;
 use Illuminate\Http\Request;
 
 class Receipts extends Controller
@@ -19,5 +20,17 @@ class Receipts extends Controller
     public function show(Receipt $receipt)
     {
         return view('front.receipts.show', compact('receipt'));
+    }
+
+    public function purchases(Receipt $receipt)
+    {
+        dd($receipt);
+        foreach($receipt->ingredients() as $ingredient)
+        {
+            Purchases::create([
+                'user_id' => auth()->id(),
+
+            ]);
+        }
     }
 }

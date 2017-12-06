@@ -59,6 +59,8 @@ $('.ingredient-name').on('input', () => {
     .then(function (response) {
         const $ingredient_results = $('.ingredient-results');
 
+        $ingredient_results.html('');
+
         if(!response.data.length) {
             $ingredient_results.append('<h5>Ингредиентов не найдено</h5>');
         }
