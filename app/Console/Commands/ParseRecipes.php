@@ -109,5 +109,17 @@ class ParseRecipes extends Command
                 'quantity' => $uantity
             ]);
         });
+
+        $description = '';
+
+        $crawler->filterXPath('//div[@class="b-article__text _articleContent"]')
+            ->filterXPath('//p')->each(function(Crawler $node, $i) use (&$description) {
+                if(!$node->attr('class'))
+                {
+                    $description .= $node->text()." ";
+                }
+            });
+
+        ParsedRecipes::where('id', $parsed_recipe->id)->update(['description' => $description]);
     }
 }

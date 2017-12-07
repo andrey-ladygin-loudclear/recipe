@@ -19,6 +19,7 @@ class CreateParsedRecipesTable extends Migration
             $table->string('name');
             $table->string('link');
             $table->string('preview')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('checked')->default(false);
             $table->boolean('approved')->default(false);
 
