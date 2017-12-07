@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Models\ParsedRecipes;
-use App\Models\ParsedSites;
+use App\Models\Parse\ParsedRecipes;
+use App\Models\Parse\ParsedSites;
+use App\Models\Parse\ParsedIngredients;
 use Goutte\Client;
 use Illuminate\Console\Command;
 use Symfony\Component\DomCrawler\Crawler;
@@ -70,12 +71,15 @@ class ParseRecipes extends Command
 					$title_count = ParsedRecipes::where('name', '=', $title)->count();
 //					$this->info("$title, $title_count");
 
+
 					if(!$title_count) {
-						ParsedRecipes::create([
+						$parsed_recipe = ParsedRecipes::create([
 							'name' => $title,
 							'link' => 'http:'.$href,
 							'preview' => 'http:'.$image,
 						]);
+
+                        $this->parsePageWithRecipe($parsed_recipe);
 					}
 				});
 
@@ -84,5 +88,26 @@ class ParseRecipes extends Command
 				]);
 			}
 		}
+    }
+
+    public function parsePageWithRecipe($parsed_recipe)
+    {
+        $this->info("Parse ingredients id: {$parsed_recipe->id}, link: {$parsed_recipe->link}");
+
+        //<li class="b-ingredients__list-item g-clearfix">
+        $crawler = $this->client->request('GET', $parsed_recipe->link);
+        $crawler->filterXPath('//li[@class="b-ingredients__list-item g-clearfix"]')->each(function(Crawler $node, $i) use ($parsed_recipe) {
+
+            $parts = explode("\n", $node->text());
+
+            $name = trim($parts[0]. ' ' . $parts[1]);
+            $uantity = trim($parts[2]. ' ' . $parts[3]);
+
+            ParsedIngredients::create([
+                'parsed_recipe_id' => $parsed_recipe->id,
+                'name' => $name,
+                'quantity' => $uantity
+            ]);
+        });
     }
 }

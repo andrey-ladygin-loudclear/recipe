@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Parse;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ParsedRecipes extends Model
+class ParsedIngredients extends Model
 {
     protected $guarded = [];
 }

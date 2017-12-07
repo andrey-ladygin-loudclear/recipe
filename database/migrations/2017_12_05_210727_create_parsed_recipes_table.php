@@ -14,7 +14,7 @@ class CreateParsedRecipesTable extends Migration
     public function up()
     {
         Schema::create('parsed_recipes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
 
             $table->string('name');
             $table->string('link');
