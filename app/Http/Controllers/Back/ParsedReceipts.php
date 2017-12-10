@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Model\Ingredient;
 use App\Model\Receipt;
-use App\Models\ParsedRecipes;
+use App\Models\Parse\ParsedRecipes;
 use Illuminate\Http\Request;
 use Mews\Purifier\Purifier;
 use Storage;

@@ -19,7 +19,7 @@ class CreateParsedIngredientsTable extends Migration
             $table->integer('parsed_recipe_id')->unsigned();
             $table->foreign('parsed_recipe_id')->references('id')->on('parsed_recipes')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->string('name')->default('');
+            $table->string('name', 1023)->default('');
             $table->string('quantity')->default('');
 
             $table->timestamps();
