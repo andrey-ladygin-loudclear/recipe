@@ -53,10 +53,10 @@ class Ingredients extends Controller
             [
                 'name' => request('name'),
                 'icon' => request('icon'),
-                'description' => clean(request('description')),
+                'note' => clean(request('note')),
             ]);
 
-        return redirect("admin/receipts");
+        return redirect("admin/ingredients");
     }
 
     /**

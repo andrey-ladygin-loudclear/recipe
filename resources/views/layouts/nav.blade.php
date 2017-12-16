@@ -15,17 +15,19 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/">Все Рецепты</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Мои Рецепты <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li class="{{ Route::getCurrentRoute()->uri == 'admin/receipts' ? 'active' : ''}}"><a href="/admin/receipts">Все</a></li>
-                        <li class="{{ Route::getCurrentRoute()->uri == 'admin/receipts/create' ? 'active' : ''}}"><a href="/admin/receipts/create">Добавить Рецепт</a></li>
-                        <li class="divider"></li>
-                        <li class="{{ Route::getCurrentRoute()->uri == 'admin/ingredients' ? 'active' : ''}}"><a href="/admin/ingredients">Ингредиенты</a></li>
-                        <li class="{{ Route::getCurrentRoute()->uri == 'admin/ingredients/create' ? 'active' : ''}}"><a href="/admin/ingredients/create">Добавить Ингредиент</a></li>
-                    </ul>
-                </li>
+                <li class="{{ Route::getCurrentRoute()->uri == '/' ? 'active' : ''}}"><a href="/">Все Рецепты</a></li>
+                @if (Auth::check())
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Мои Рецепты <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="{{ Route::getCurrentRoute()->uri == 'admin/receipts' ? 'active' : ''}}"><a href="/admin/receipts">Все</a></li>
+                            <li class="{{ Route::getCurrentRoute()->uri == 'admin/receipts/create' ? 'active' : ''}}"><a href="/admin/receipts/create">Добавить Рецепт</a></li>
+                            <li class="divider"></li>
+                            <li class="{{ Route::getCurrentRoute()->uri == 'admin/ingredients' ? 'active' : ''}}"><a href="/admin/ingredients">Ингредиенты</a></li>
+                            <li class="{{ Route::getCurrentRoute()->uri == 'admin/ingredients/create' ? 'active' : ''}}"><a href="/admin/ingredients/create">Добавить Ингредиент</a></li>
+                        </ul>
+                    </li>
+                @endif
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -33,19 +35,28 @@
                 </div>
                 <button type="submit" class="btn btn-default">Отправить</button>
             </form>
+
             <ul class="nav navbar-nav navbar-right">
-                <li class="{{ Route::getCurrentRoute()->uri == 'admin/parsed-receipts' ? 'active' : ''}}"><a href="/admin/parsed-receipts">Новые рецепты</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Действие</a></li>
-                        <li><a href="#">Другое действие</a></li>
-                        <li><a href="#">Что-то еще</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Отдельная ссылка</a></li>
-                    </ul>
+                @if (Auth::check())
+                    <li class="{{ Route::getCurrentRoute()->uri == 'admin/parsed-receipts' ? 'active' : ''}}"><a href="/admin/parsed-receipts">Новые рецепты</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Действие</a></li>
+                            <li><a href="#">Другое действие</a></li>
+                            <li><a href="#">Что-то еще</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Отдельная ссылка</a></li>
+                        </ul>
+                    </li>
+                @endif
+                <li>
+                    @if (Auth::check())
+                        <a href="/logout">Выйти</a>
+                    @else
+                        <a href="/login">Войти</a>
+                    @endif
                 </li>
-                <li><a href="/logout">Выйти</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

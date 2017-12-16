@@ -18,7 +18,7 @@ class CreateIngredientsTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('name');
             $table->string('icon')->default(IconHelper::QUESTION_MARK);
-            $table->text('description')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

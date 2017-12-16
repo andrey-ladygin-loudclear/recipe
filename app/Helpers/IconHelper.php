@@ -46,4 +46,32 @@ abstract class IconHelper {
 
         return $icons->toArray();
     }
+
+    public static function getDirsIcons()
+    {
+        $dirs = [];
+
+        $path = public_path() . self::ICONS_DIR;
+
+        foreach(scandir($path) as $dir)
+        {
+            if(!in_array($dir, ['.', '..'])) {
+
+                $images = [];
+
+                foreach(scandir("$path/$dir") as $file)
+                {
+                    if(!in_array($file, ['.', '..']))
+                    {
+                        $images[] = "/$dir/$file";
+                    }
+                }
+
+                $dirs[$dir] = $images;
+
+            }
+        }
+
+        return $dirs;
+    }
 }

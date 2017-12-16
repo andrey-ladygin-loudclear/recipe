@@ -13,10 +13,10 @@
 
         @include('back.components.select-icon-form-group', ['icon' => $ingredient->icon ?? old('icon'), 'model' => new \App\Model\Ingredient()])
 
-        <div class="form-group">
-            {{ Form::label('description', 'Description:') }}
-            {{ Form::textarea('description', $ingredient->description ?? old('description'), ['class' => 'form-control wysiwyg']) }}
-        </div>
+        {{--<div class="form-group">--}}
+            {{--{{ Form::label('note', 'Notes:') }}--}}
+            {{--{{ Form::textarea('note', $ingredient->note ?? old('note'), ['class' => 'form-control wysiwyg']) }}--}}
+        {{--</div>--}}
 
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Сохранить</button>

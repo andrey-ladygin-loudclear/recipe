@@ -23,9 +23,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    @foreach(App\Helpers\IconHelper::getIcons() as $icon)
-                        @include('back.components.icon', ['icon' => $icon])
-                    @endforeach
+                    <div class="panel-group" id="ingredients-accordion">
+                        @foreach(App\Helpers\IconHelper::getDirsIcons() as $name => $dir)
+                            @include('back.components.ingredient-panel', ['dir' => $dir, 'name' => $name])
+                        @endforeach
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

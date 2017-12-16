@@ -1,7 +1,7 @@
 <div class="form-group">
     {{ Form::label('icon', 'Ингредиенты:') }}
 
-    <div class="added-ingredients">
+    <div class="added-ingredients well">
         @foreach($ingredients as $ingredient)
             <div class="added-ingredient row form-inline">
                 <label class="col-md-4">
