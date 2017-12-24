@@ -27,6 +27,6 @@ class CreateParsedSitesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parsed_sites');
+        //Schema::dropIfExists('parsed_sites');
     }
 }

@@ -97,16 +97,6 @@ let addIngredientToHtml = (i) => {
     </label>
     <input type="hidden" name="ingredients[${i.id}][id]" value="${i.id}">
     <input type="text" name="ingredients[${i.id}][notes]" value="" class="form-control col-md-4" placeholder="Нотации">
-    <input type="text" name="ingredients[${i.id}][quantity]" value="1" class="form-control col-md-4" placeholder="Количество">
-    <select name="ingredients[${i.id}][measure]" class="form-control col-md-3">
-        <option value="ч.л.">ч.л.</option>
-        <option value="ст.л.">ст.л.</option>
-        <option value="стакана">стакана</option>
-        <option value="шт.">шт.</option>
-        <option value="грамма">грамма</option>
-        <option value="литра">литра</option>
-        <option value="по вкусу">по вкусу</option>
-    </select>
     <span class="glyphicon glyphicon-trash col-md-1 remove-ingredient"></span>
 </div>  
         `);

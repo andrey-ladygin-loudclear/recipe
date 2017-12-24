@@ -35,6 +35,6 @@ class CreateParsedRecipesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parsed_recipes');
+        //Schema::dropIfExists('parsed_recipes');
     }
 }

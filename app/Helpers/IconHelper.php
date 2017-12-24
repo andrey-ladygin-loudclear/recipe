@@ -8,6 +8,7 @@ abstract class IconHelper {
 
     const ICONS_DIR = '/assets/img/icons';
     const QUESTION_MARK = '/special/Inv_misc_questionmark.png';
+    const RECIPE_MARK = '/special/Inv_scroll_03';
 
     public static function asset($icon)
     {

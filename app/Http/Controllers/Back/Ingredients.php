@@ -52,7 +52,7 @@ class Ingredients extends Controller
             ['id' => request('id')],
             [
                 'name' => request('name'),
-                'icon' => request('icon'),
+                'icon' => request('icon') ?? IconHelper::QUESTION_MARK,
                 'note' => clean(request('note')),
             ]);
 

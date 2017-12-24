@@ -1,3 +1,16 @@
 .ingredient-details {
 
 }
+
+.ingredients-list-popup {
+    width: 350px;
+    position: fixed;
+    top: 150px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 0 10px 10px 0;
+
+    img {
+        width: 32px;
+    }
+}

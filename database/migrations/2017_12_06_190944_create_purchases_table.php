@@ -19,8 +19,10 @@ class CreatePurchasesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
+            $table->string('icon');
             $table->string('ingredient');
-            $table->string('notes', 65535);
+            $table->string('notes', 1024);
+            $table->boolean('bought')->default(false);
 
             //$table->integer('ingredient_id')->unsigned();
             //$table->index('ingredient_id');

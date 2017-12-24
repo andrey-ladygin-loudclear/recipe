@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Back;
 
+use App\Helpers\IconHelper;
 use App\Http\Controllers\Controller;
 use App\Model\Ingredient;
 use App\Model\Receipt;
@@ -61,7 +62,7 @@ class Receipts extends Controller
                 'user_id' => auth()->id(),
                 'name' => request('name'),
                 'preview' => !empty($path) ? Storage::url($path) : '',
-                'icon' => request('icon'),
+                'icon' => request('icon') ?? IconHelper::RECIPE_MARK,
                 'author' => request('author') ?? '',
                 'cooking_time' => request('cooking_time'),
                 'public' => request('public') ? 1 : 0,
@@ -75,8 +76,7 @@ class Receipts extends Controller
         {
             $receipt->ingredients()->sync([
                 $ingredient['id'] => [
-                    'quantity' => $ingredient['quantity'],
-                    'measure' => $ingredient['measure'],
+                    'notes' => $ingredient['notes']
                 ]
             ], false);
         }

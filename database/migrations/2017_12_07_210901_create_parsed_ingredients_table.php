@@ -33,6 +33,7 @@ class CreateParsedIngredientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parsed_ingredients');
+        //Schema::dropIfExists('parsed_ingredients');
+        //if(!Schema::hasTable('mytable')) {}
     }
 }

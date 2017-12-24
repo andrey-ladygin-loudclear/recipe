@@ -9,16 +9,7 @@
                     <span class="col-md-9">{{$ingredient->name}}</span>
                 </label>
                 <input type="hidden" name="ingredients[{{$ingredient->id}}][id]" value="{{$ingredient->id}}">
-                <input type="text" name="ingredients[{{$ingredient->id}}][quantity]" value="{{$ingredient->pivot->quantity}}" class="form-control col-md-4">
-                <select name="ingredients[{{$ingredient->id}}][measure]" class="form-control col-md-3">
-                    <option @if($ingredient->pivot->measure == 'ч.л.') selected @endif value="ч.л.">ч.л.</option>
-                    <option @if($ingredient->pivot->measure == 'ст.л.') selected @endif value="ст.л.">ст.л.</option>
-                    <option @if($ingredient->pivot->measure == 'стакана') selected @endif value="стакана">стакана</option>
-                    <option @if($ingredient->pivot->measure == 'шт.') selected @endif value="шт.">шт.</option>
-                    <option @if($ingredient->pivot->measure == 'грамма') selected @endif value="грамма">грамма</option>
-                    <option @if($ingredient->pivot->measure == 'литра') selected @endif value="литра">литра</option>
-                    <option @if($ingredient->pivot->measure == 'по вкусу') selected @endif value="по вкусу">по вкусу</option>
-                </select>
+                <input type="text" name="ingredients[{{$ingredient->id}}][notes]" value="{{$ingredient->pivot->notes}}" class="form-control col-md-4">
                 <span class="glyphicon glyphicon-trash col-md-1 remove-ingredient"></span>
             </div>
 

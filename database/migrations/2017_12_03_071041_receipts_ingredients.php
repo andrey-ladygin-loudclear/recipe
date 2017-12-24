@@ -20,8 +20,8 @@ class ReceiptsIngredients extends Migration
             $table->integer('ingredient_id')->unsigned();
 
             $table->string('notes', 65535)->default('');
-            $table->string('quantity')->default('');
-            $table->string('measure')->default('');
+//            $table->string('quantity')->default('');
+//            $table->string('measure')->default('');
 
 //            $table->unique(['receipt_id', 'ingredient_id']);
 

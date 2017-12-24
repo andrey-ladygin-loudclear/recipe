@@ -8,7 +8,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><img src="http://wow.zamimg.com/images/wow/icons/medium/inv_scroll_03.jpg" alt=""></a>
+            <a class="navbar-brand" href="/"><img width="40px" src="https://vignette.wikia.nocookie.net/wowwiki/images/a/af/Inv_scroll_03.png/revision/latest?cb=20060724145642" alt=""></a>
+            {{--<a class="navbar-brand" href="/"><img src="http://wow.zamimg.com/images/wow/icons/medium/inv_scroll_03.jpg" alt=""></a>--}}
             <!--a class="navbar-brand" href="#">Рецепты Запределья</a-->
         </div>
 
@@ -27,6 +28,7 @@
                             <li class="{{ Route::getCurrentRoute()->uri == 'admin/ingredients/create' ? 'active' : ''}}"><a href="/admin/ingredients/create">Добавить Ингредиент</a></li>
                         </ul>
                     </li>
+                    <li class="{{ Route::getCurrentRoute()->uri == 'purchases' ? 'active' : ''}}"><a href="/purchases">Покупки</a></li>
                 @endif
             </ul>
             <form class="navbar-form navbar-left" role="search">

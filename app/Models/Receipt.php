@@ -14,6 +14,6 @@ class Receipt extends Model
 
     public function ingredients()
     {
-        return $this->belongsToMany(Ingredient::class, 'receipt_ingredients')->withPivot(['quantity', 'measure']);
+        return $this->belongsToMany(Ingredient::class, 'receipt_ingredients')->withPivot(['notes']);
     }
 }

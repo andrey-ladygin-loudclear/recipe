@@ -23,6 +23,11 @@ Route::get('/admin/parsed-receipts', 'Back\ParsedReceipts@index');
 Route::get('/receipts/purchases/{receipt}', 'Front\Receipts@purchases');
 Route::get('/receipts/{receipt}', 'Front\Receipts@show');
 Route::get('/ingredients/{ingredient}', 'Front\Ingredients@show');
+Route::get('/purchases', 'Front\Purchases@index');
+Route::get('/purchases/buy/{purchase}', 'Front\Purchases@buy');
+Route::get('/purchases/add_to_purchases/{purchase}', 'Front\Purchases@addToPurchases');
+Route::get('/purchases/clear', 'Front\Purchases@clear');
+Route::get('/purchases/add', 'Front\Purchases@add');
 
 
 //Route::get('/home', 'HomeController@index')->name('home');

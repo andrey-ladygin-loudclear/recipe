@@ -24,13 +24,17 @@ class Receipts extends Controller
 
     public function purchases(Receipt $receipt)
     {
-        dd($receipt);
-        foreach($receipt->ingredients() as $ingredient)
+        foreach($receipt->ingredients as $ingredient)
         {
+            /** @var $ingredient Ingredient **/
             Purchases::create([
                 'user_id' => auth()->id(),
-
+                'ingredient' => $ingredient->name,
+                'icon' => $ingredient->icon,
+                'notes' => "{$ingredient->pivot->notes}",
             ]);
         }
+
+        return redirect()->back();
     }
 }
