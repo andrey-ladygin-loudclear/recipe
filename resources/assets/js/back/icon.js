@@ -6,3 +6,5 @@ $('.icon').on('click', function () {
     $('input[name="icon"]').val($(this).data('icon'));
     $('.icon-preview').html(`<img src="${$(this).find('img').attr('src')}" data-toggle="modal" data-target="#selectIconPopup"/>`)
 });
+
+console.log('http://feej.ru/');

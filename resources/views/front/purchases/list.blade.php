@@ -19,7 +19,7 @@
                                 - {{$purchase->ingredient}}, {{$purchase->notes}}
                             </td>
                             <td>
-                                <a href="/purchases/buy/{{$purchase->id}}" class="btn btn-success">Куплено</a>
+                                <a href="/purchases/buy/{{$purchase->id}}" class="btn btn-success">Купил</a>
                             </td>
                         </tr>
                     @endif
@@ -50,7 +50,7 @@
                                     - <del>{{$purchase->ingredient}}, {{$purchase->notes}}</del>
                                 </td>
                                 <td>
-                                    <a href="/purchases/add_to_purchases/{{$purchase->id}}" class="btn btn-danger">Не куплено</a>
+                                    <a href="/purchases/add_to_purchases/{{$purchase->id}}" class="btn btn-danger">Не купил</a>
                                 </td>
                             </tr>
                         @endif
