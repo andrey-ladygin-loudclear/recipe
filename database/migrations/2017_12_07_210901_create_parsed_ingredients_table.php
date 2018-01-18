@@ -13,17 +13,19 @@ class CreateParsedIngredientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('parsed_ingredients', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+		if (!Schema::hasTable('parsed_ingredients')) {
+			Schema::create('parsed_ingredients', function (Blueprint $table) {
+				$table->increments('id')->unsigned();
 
-            $table->integer('parsed_recipe_id')->unsigned();
-            $table->foreign('parsed_recipe_id')->references('id')->on('parsed_recipes')->onDelete('cascade')->onUpdate('cascade');
+				$table->integer('parsed_recipe_id')->unsigned();
+				$table->foreign('parsed_recipe_id')->references('id')->on('parsed_recipes')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->string('name', 65535)->default('');
-            $table->string('quantity')->default('');
+				$table->string('name', 16000)->default('');
+				$table->string('quantity')->default('');
 
-            $table->timestamps();
-        });
+				$table->timestamps();
+			});
+		}
     }
 
     /**

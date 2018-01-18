@@ -14,13 +14,15 @@ class CreateIngredientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ingredients', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
-            $table->string('name');
-            $table->string('icon')->default(IconHelper::QUESTION_MARK);
-            $table->text('note')->nullable();
-            $table->timestamps();
-        });
+		if (!Schema::hasTable('ingredients')) {
+			Schema::create('ingredients', function (Blueprint $table) {
+				$table->increments('id')->unsigned();
+				$table->string('name');
+				$table->string('icon')->default(IconHelper::QUESTION_MARK);
+				$table->text('note')->nullable();
+				$table->timestamps();
+			});
+		}
     }
 
     /**

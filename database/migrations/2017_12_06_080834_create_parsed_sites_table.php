@@ -13,11 +13,13 @@ class CreateParsedSitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('parsed_sites', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
-            $table->string('url');
-            $table->timestamps();
-        });
+		if (!Schema::hasTable('parsed_sites')) {
+			Schema::create('parsed_sites', function (Blueprint $table) {
+				$table->increments('id')->unsigned();
+				$table->string('url');
+				$table->timestamps();
+			});
+    	}
     }
 
     /**

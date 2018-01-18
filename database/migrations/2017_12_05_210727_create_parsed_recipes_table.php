@@ -13,19 +13,21 @@ class CreateParsedRecipesTable extends Migration
      */
     public function up()
     {
-        Schema::create('parsed_recipes', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+		if (!Schema::hasTable('parsed_recipes')) {
+			Schema::create('parsed_recipes', function (Blueprint $table) {
+				$table->increments('id')->unsigned();
 
-            $table->string('name');
-            $table->string('link');
-            $table->string('preview')->nullable();
-            $table->text('description')->nullable();
-            $table->text('html')->nullable();
-            $table->boolean('checked')->default(false);
-            $table->boolean('approved')->default(false);
+				$table->string('name');
+				$table->string('link');
+				$table->string('preview')->nullable();
+				$table->text('description')->nullable();
+				$table->text('html')->nullable();
+				$table->boolean('checked')->default(false);
+				$table->boolean('approved')->default(false);
 
-            $table->timestamps();
-        });
+				$table->timestamps();
+			});
+    	}
     }
 
     /**
