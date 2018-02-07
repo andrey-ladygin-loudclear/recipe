@@ -22,6 +22,7 @@
     <div class="content">
         @yield('content')
     </div>
+    @include('front.components.notify')
 </div>
 <script src="/assets/js/app.js"></script>
 </body>

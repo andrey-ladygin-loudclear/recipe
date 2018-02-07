@@ -35,6 +35,7 @@ class Receipts extends Controller
             ]);
         }
 
+        \Session::flash('alert-success', 'Ингридиенты были добавлены в список покупок!');
         return redirect()->back();
     }
 }

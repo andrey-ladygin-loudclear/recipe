@@ -91,12 +91,12 @@ let alreadyAdded = (i) => {
 let addIngredientToHtml = (i) => {
     const $item = $(`
 <div class="added-ingredient row form-inline" data-id="${i.id}">
-    <label class="col-md-4">
+    <label class="col-md-3">
         <img src="/assets/img/icons/${i.icon}" class="col-md-3">
         <span class="col-md-9">${i.name}</span>
     </label>
     <input type="hidden" name="ingredients[${i.id}][id]" value="${i.id}">
-    <input type="text" name="ingredients[${i.id}][notes]" value="" class="form-control col-md-4" placeholder="Нотации">
+    <input type="text" name="ingredients[${i.id}][notes]" value="" class="form-control col-xs-8" placeholder="Нотации"  style="width: 60%">
     <span class="glyphicon glyphicon-trash col-md-1 remove-ingredient"></span>
 </div>  
         `);

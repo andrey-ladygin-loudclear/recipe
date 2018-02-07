@@ -4,12 +4,12 @@
     <div class="added-ingredients well">
         @foreach($ingredients as $ingredient)
             <div class="added-ingredient row form-inline">
-                <label class="col-md-4">
+                <label class="col-md-3">
                     <img src="{{ App\Helpers\IconHelper::asset($ingredient->icon) }}" class="col-md-3">
                     <span class="col-md-9">{{$ingredient->name}}</span>
                 </label>
                 <input type="hidden" name="ingredients[{{$ingredient->id}}][id]" value="{{$ingredient->id}}">
-                <input type="text" name="ingredients[{{$ingredient->id}}][notes]" value="{{$ingredient->pivot->notes}}" class="form-control col-md-4">
+                <input type="text" name="ingredients[{{$ingredient->id}}][notes]" value="{{$ingredient->pivot->notes}}" class="form-control col-xs-8" style="width: 60%">
                 <span class="glyphicon glyphicon-trash col-md-1 remove-ingredient"></span>
             </div>
 

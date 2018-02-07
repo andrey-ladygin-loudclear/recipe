@@ -13,7 +13,7 @@
             @endforeach    
         </div>
 
-        <a href="/receipts/purchases/{{$receipt->id}}}" class="btn btn-primary">Добавить ингредиенты в список покупок</a>
+        <a href="/receipts/purchases/{{$receipt->id}}" class="btn btn-primary">Добавить ингредиенты в список покупок</a>
     </div>
 @endsection
 
@@ -26,5 +26,5 @@
         @endforeach
     </div>
 
-    <a href="/receipts/purchases/{{$receipt->id}}}" class="btn btn-primary">Добавить ингредиенты в список покупок</a>
+    <a href="/receipts/purchases/{{$receipt->id}}" class="btn btn-primary">Добавить ингредиенты в список покупок</a>
 </div>

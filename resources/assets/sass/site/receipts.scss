@@ -5,13 +5,15 @@
         border-bottom: 1px solid #eaeaea;
 
         h3 {
+            padding: 0;
+            margin: 0;
+
             a {
                 color: #aaa;
                 text-decoration: none;
 
                 &:hover {
-                    color: #888;
-                    text-decoration: underline;
+                    color: #555;
                 }
             }
         }
